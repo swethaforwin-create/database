@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - SmartMall AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>SmartMall AI</h2>
+    <button onclick="location.href='cart.html'">Back to Cart</button>
+</header>
+
+<section class="page">
+
+    <h1>Bill Generation</h1>
+
+    <div class="form-box">
+
+        <h2>Customer Details</h2>
+
+        <p><b>Customer Name:</b> <span id="customerName"></span></p>
+        <p><b>Customer ID:</b> <span id="customerId"></span></p>
+        <p><b>Shop:</b> <span id="shopName"></span></p>
+
+        <hr>
+
+        <h2>Purchase Details</h2>
+
+        <div id="billItems"></div>
+
+        <hr>
+
+        <h2>Total Amount: ₹<span id="total"></span></h2>
+
+        <button onclick="confirmBill()">
+            Confirm Bill
+        </button>
+
+        <p id="message"></p>
+
+    </div>
+
+</section>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let customerName =
+    localStorage.getItem("customerName") || "Customer";
+
+let customerId =
+    localStorage.getItem("customerId") || "Not Available";
+
+let shop =
+    localStorage.getItem("selectedShop") || "Shopping Mall";
+
+
+document.getElementById("customerName").innerHTML =
+    customerName;
+
+document.getElementById("customerId").innerHTML =
+    customerId;
+
+document.getElementById("shopName").innerHTML =
+    shop;
+
+
+let billItems = "";
+let total = 0;
+
+
+cart.forEach(function(item, index) {
+
+    billItems +=
+        "<p>" +
+        (index + 1) +
+        ". " +
+        item.name +
+        " - ₹" +
+        item.price +
+        "</p>";
+
+    total += item.price;
+});
+
+
+document.getElementById("billItems").innerHTML =
+    billItems;
+
+document.getElementById("total").innerHTML =
+    total;
+
+
+function confirmBill() {
+
+    localStorage.setItem("billTotal", total);
+
+    document.getElementById("message").innerHTML =
+        "✅ Bill generated successfully!";
+
+    setTimeout(function() {
+        location.href = "dashboard.html";
+    }, 1000);
+}
+
+</script>
+
+</body>
+</html>
