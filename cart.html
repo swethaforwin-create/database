@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - SmartMall AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>SmartMall AI</h2>
+    <button onclick="location.href='shops.html'">Back to Shops</button>
+</header>
+
+<section class="page">
+
+    <h1>Shopping Cart</h1>
+
+    <h3 id="shopName"></h3>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>👕 T-Shirt</h3>
+            <p>Price: ₹599</p>
+            <button onclick="addToCart('T-Shirt', 599)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>🎧 Headphones</h3>
+            <p>Price: ₹1499</p>
+            <button onclick="addToCart('Headphones', 1499)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>🎒 School Bag</h3>
+            <p>Price: ₹999</p>
+            <button onclick="addToCart('School Bag', 999)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>👟 Sports Shoes</h3>
+            <p>Price: ₹1999</p>
+            <button onclick="addToCart('Sports Shoes', 1999)">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+
+    <div class="form-box">
+
+        <h2>Selected Products</h2>
+
+        <p id="cartItems">No products selected.</p>
+
+        <h2>Total: ₹<span id="total">0</span></h2>
+
+        <button onclick="goToBilling()">
+            Continue to Billing
+        </button>
+
+    </div>
+
+</section>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let shop = localStorage.getItem("selectedShop") || "Shopping Mall";
+
+document.getElementById("shopName").innerHTML =
+    "Selected Shop: " + shop;
+
+
+function addToCart(product, price) {
+
+    cart.push({
+        name: product,
+        price: price
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+}
+
+
+function displayCart() {
+
+    let items = "";
+    let total = 0;
+
+    cart.forEach(function(item, index) {
+
+        items += (index + 1) + ". " +
+                 item.name + " - ₹" +
+                 item.price + "<br>";
+
+        total += item.price;
+    });
+
+    if (cart.length === 0) {
+        items = "No products selected.";
+    }
+
+    document.getElementById("cartItems").innerHTML = items;
+    document.getElementById("total").innerHTML = total;
+}
+
+
+function goToBilling() {
+
+    if (cart.length === 0) {
+        alert("Please add at least one product.");
+        return;
+    }
+
+    location.href = "billing.html";
+}
+
+
+displayCart();
+
+</script>
+
+</body>
+</html>
