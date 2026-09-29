@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Suggestions - SmartMall AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h2>SmartMall AI</h2>
+
+    <button onclick="location.href='dashboard.html'">
+        Dashboard
+    </button>
+
+</header>
+
+
+<section class="page">
+
+    <h1>🤖 AI Shopping Suggestions</h1>
+
+    <p>
+        Smart recommendations based on your selected products.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h2>👗 Fashion</h2>
+
+            <p>
+                You may also like watches,
+                handbags and accessories.
+            </p>
+
+            <button onclick="showRecommendation('Fashion')">
+                Get Suggestion
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📱 Electronics</h2>
+
+            <p>
+                You may also like mobile covers,
+                earphones and power banks.
+            </p>
+
+            <button onclick="showRecommendation('Electronics')">
+                Get Suggestion
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🛒 Supermarket</h2>
+
+            <p>
+                You may also like snacks,
+                beverages and household products.
+            </p>
+
+            <button onclick="showRecommendation('Supermarket')">
+                Get Suggestion
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>👟 Footwear</h2>
+
+            <p>
+                You may also like socks,
+                sportswear and shoe accessories.
+            </p>
+
+            <button onclick="showRecommendation('Footwear')">
+                Get Suggestion
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-box">
+
+        <h2>AI Result</h2>
+
+        <p id="result">
+            Select a category to get an AI suggestion.
+        </p>
+
+    </div>
+
+
+    <br>
+
+    <button onclick="location.href='index.html'">
+        Back to Home
+    </button>
+
+</section>
+
+
+<script>
+
+function showRecommendation(category) {
+
+    let result = "";
+
+    if (category === "Fashion") {
+
+        result =
+        "🤖 AI Suggestion: Try matching your clothes with accessories and watches.";
+
+    }
+
+    else if (category === "Electronics") {
+
+        result =
+        "🤖 AI Suggestion: Consider a mobile cover, earphones or power bank.";
+
+    }
+
+    else if (category === "Supermarket") {
+
+        result =
+        "🤖 AI Suggestion: You may also need snacks, beverages and household items.";
+
+    }
+
+    else if (category === "Footwear") {
+
+        result =
+        "🤖 AI Suggestion: Sports socks and footwear accessories may be useful.";
+
+    }
+
+    document.getElementById("result").innerHTML = result;
+
+}
+
+</script>
+
+</body>
+
+</html>
