@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shops - SmartMall AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>SmartMall AI</h2>
+    <button onclick="location.href='customer.html'">Back</button>
+</header>
+
+<section class="page">
+
+    <h1>Choose a Shop</h1>
+    <p>Select a shop to view available products.</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>👗 Fashion Store</h2>
+            <p>Clothes & Accessories</p>
+            <button onclick="selectShop('Fashion Store')">
+                View Products
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>📱 Electronics</h2>
+            <p>Mobiles & Gadgets</p>
+            <button onclick="selectShop('Electronics')">
+                View Products
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🛒 Supermarket</h2>
+            <p>Groceries & Daily Needs</p>
+            <button onclick="selectShop('Supermarket')">
+                View Products
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>👟 Footwear</h2>
+            <p>Shoes & Sandals</p>
+            <button onclick="selectShop('Footwear')">
+                View Products
+            </button>
+        </div>
+
+    </div>
+
+    <p id="shopMessage"></p>
+
+</section>
+
+<script>
+function selectShop(shopName) {
+
+    localStorage.setItem("selectedShop", shopName);
+
+    document.getElementById("shopMessage").innerHTML =
+        "Selected Shop: " + shopName + "<br>Loading products...";
+
+    setTimeout(function() {
+        location.href = "cart.html";
+    }, 800);
+}
+</script>
+
+</body>
+</html>
