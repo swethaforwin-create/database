@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details - SmartMall AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>SmartMall AI</h2>
+    <button onclick="location.href='index.html'">Home</button>
+</header>
+
+<section class="page">
+
+    <h1>Customer Details</h1>
+    <p>Enter your details to start shopping.</p>
+
+    <div class="form-box">
+
+        <label>Customer Name</label>
+        <input type="text" id="customerName" placeholder="Enter your name">
+
+        <label>Customer ID</label>
+        <input type="text" id="customerId" placeholder="Enter customer ID">
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter phone number">
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter email">
+
+        <button onclick="saveCustomer()">Continue</button>
+
+        <p id="message"></p>
+
+    </div>
+
+</section>
+
+<script>
+function saveCustomer() {
+
+    let name = document.getElementById("customerName").value;
+    let id = document.getElementById("customerId").value;
+
+    if (name === "" || id === "") {
+        document.getElementById("message").innerHTML =
+            "Please enter your name and Customer ID.";
+        return;
+    }
+
+    localStorage.setItem("customerName", name);
+    localStorage.setItem("customerId", id);
+
+    location.href = "shops.html";
+}
+</script>
+
+</body>
+</html>
