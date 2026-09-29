@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SmartMall AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>SmartMall AI</h2>
+    <button onclick="location.href='index.html'">Home</button>
+</header>
+
+<section class="page">
+
+    <h1>Shopping Mall Dashboard</h1>
+    <p>Welcome, <b id="customerName"></b></p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>🏬</h2>
+            <h3>Available Shops</h3>
+            <p>4 Shops</p>
+        </div>
+
+        <div class="card">
+            <h2>📦</h2>
+            <h3>Available Products</h3>
+            <p>120 Products</p>
+        </div>
+
+        <div class="card">
+            <h2>🛒</h2>
+            <h3>Cart Items</h3>
+            <p id="cartCount">0</p>
+        </div>
+
+        <div class="card">
+            <h2>💰</h2>
+            <h3>Last Bill</h3>
+            <p>₹<span id="billTotal">0</span></p>
+        </div>
+
+    </div>
+
+    <div class="form-box">
+
+        <h2>AI Shopping Suggestion 🤖</h2>
+
+        <p id="suggestion">
+            Based on your shopping activity, we can suggest
+            useful products for you.
+        </p>
+
+        <button onclick="showSuggestion()">
+            Get AI Suggestion
+        </button>
+
+    </div>
+
+    <br>
+
+    <button onclick="location.href='suggestions.html'">
+        View All AI Suggestions
+    </button>
+
+</section>
+
+<script>
+
+let customer =
+    localStorage.getItem("customerName") || "Customer";
+
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+let total =
+    localStorage.getItem("billTotal") || 0;
+
+
+document.getElementById("customerName").innerHTML =
+    customer;
+
+document.getElementById("cartCount").innerHTML =
+    cart.length;
+
+document.getElementById("billTotal").innerHTML =
+    total;
+
+
+function showSuggestion() {
+
+    document.getElementById("suggestion").innerHTML =
+        "🤖 AI Suggestion: Customers who buy fashion products " +
+        "may also like accessories and footwear.";
+}
+
+</script>
+
+</body>
+</html>
